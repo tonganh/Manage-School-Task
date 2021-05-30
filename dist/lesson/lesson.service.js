@@ -31,8 +31,9 @@ let LessonService = class LessonService {
     constructor(lessonRepository) {
         this.lessonRepository = lessonRepository;
     }
-    createLesson(name, startDate, endDate) {
+    createLesson(createLessonInput) {
         return __awaiter(this, void 0, void 0, function* () {
+            const { name, startDate, endDate } = createLessonInput;
             const lesson = this.lessonRepository.create({
                 id: uuid_1.v4(),
                 name,

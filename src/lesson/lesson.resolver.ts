@@ -1,4 +1,5 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
+import { CreateLessonInput } from "./lesson.input";
 import { LessonService } from "./lesson.service";
 import { LessonType } from "./lesson.type";
 
@@ -6,18 +7,14 @@ import { LessonType } from "./lesson.type";
 export class LessonrResolver {
   constructor(private lessonService: LessonService) {}
   @Query(returns => LessonType)
-  lesson(
-    @Args('id') id:string,
-  ) {
-    return this.lessonService.getLesson(id)
+  lesson(@Args("id") id: string) {
+    return this.lessonService.getLesson(id);
   }
 
   @Mutation(returns => LessonType)
   createLesson(
-    @Args("startDate") startDate: string,
-    @Args("name") name: string,
-    @Args("endDate") endDate: string
+    @Args("createLessonInput") createLessonInput: CreateLessonInput
   ) {
-    return this.lessonService.createLesson(name, startDate, endDate);
+    return this.lessonService.createLesson(createLessonInput);
   }
 }
