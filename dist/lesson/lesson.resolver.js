@@ -8,36 +8,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LessonrResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
+const lesson_service_1 = require("./lesson.service");
 const lesson_type_1 = require("./lesson.type");
 let LessonrResolver = class LessonrResolver {
-    lesson() {
-        return {
-            id: 'adsf',
-            name: 'tong anh',
-            startDate: new Date().toISOString(),
-            endDate: new Date().toISOString(),
-        };
+    constructor(lessonService) {
+        this.lessonService = lessonService;
     }
-    createLesson() {
+    lesson(id) {
+        return this.lessonService.getLesson(id);
+    }
+    createLesson(startDate, name, endDate) {
+        return this.lessonService.createLesson(name, startDate, endDate);
     }
 };
 __decorate([
-    graphql_1.Query((returns) => lesson_type_1.LessonType),
+    graphql_1.Query(returns => lesson_type_1.LessonType),
+    __param(0, graphql_1.Args('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], LessonrResolver.prototype, "lesson", null);
 __decorate([
     graphql_1.Mutation(returns => lesson_type_1.LessonType),
+    __param(0, graphql_1.Args("startDate")),
+    __param(1, graphql_1.Args("name")),
+    __param(2, graphql_1.Args("endDate")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String, String, String]),
     __metadata("design:returntype", void 0)
 ], LessonrResolver.prototype, "createLesson", null);
 LessonrResolver = __decorate([
-    graphql_1.Resolver((of) => lesson_type_1.LessonType)
+    graphql_1.Resolver(of => lesson_type_1.LessonType),
+    __metadata("design:paramtypes", [lesson_service_1.LessonService])
 ], LessonrResolver);
 exports.LessonrResolver = LessonrResolver;
 //# sourceMappingURL=lesson.resolver.js.map

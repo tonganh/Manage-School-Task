@@ -34,12 +34,17 @@ let LessonService = class LessonService {
     createLesson(name, startDate, endDate) {
         return __awaiter(this, void 0, void 0, function* () {
             const lesson = this.lessonRepository.create({
-                id: uuid_1.v4,
+                id: uuid_1.v4(),
                 name,
                 startDate,
-                endDate
+                endDate,
             });
             return this.lessonRepository.save(lesson);
+        });
+    }
+    getLesson(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.lessonRepository.findOne({ id });
         });
     }
 };
