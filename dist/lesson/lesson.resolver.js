@@ -12,17 +12,20 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LessonrResolver = void 0;
+exports.LessonResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const lesson_input_1 = require("./lesson.input");
-const lesson_service_1 = require("./lesson.service");
 const lesson_type_1 = require("./lesson.type");
-let LessonrResolver = class LessonrResolver {
+const lesson_service_1 = require("./lesson.service");
+const lesson_input_1 = require("./lesson.input");
+let LessonResolver = class LessonResolver {
     constructor(lessonService) {
         this.lessonService = lessonService;
     }
     lesson(id) {
         return this.lessonService.getLesson(id);
+    }
+    lessons() {
+        return this.lessonService.getLessons();
     }
     createLesson(createLessonInput) {
         return this.lessonService.createLesson(createLessonInput);
@@ -34,17 +37,23 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], LessonrResolver.prototype, "lesson", null);
+], LessonResolver.prototype, "lesson", null);
+__decorate([
+    graphql_1.Query(returns => [lesson_type_1.LessonType]),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], LessonResolver.prototype, "lessons", null);
 __decorate([
     graphql_1.Mutation(returns => lesson_type_1.LessonType),
     __param(0, graphql_1.Args("createLessonInput")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [lesson_input_1.CreateLessonInput]),
     __metadata("design:returntype", void 0)
-], LessonrResolver.prototype, "createLesson", null);
-LessonrResolver = __decorate([
+], LessonResolver.prototype, "createLesson", null);
+LessonResolver = __decorate([
     graphql_1.Resolver(of => lesson_type_1.LessonType),
     __metadata("design:paramtypes", [lesson_service_1.LessonService])
-], LessonrResolver);
-exports.LessonrResolver = LessonrResolver;
+], LessonResolver);
+exports.LessonResolver = LessonResolver;
 //# sourceMappingURL=lesson.resolver.js.map

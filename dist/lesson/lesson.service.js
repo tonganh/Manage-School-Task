@@ -24,12 +24,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LessonService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
 const lesson_entity_1 = require("./lesson.entity");
+const typeorm_2 = require("typeorm");
 const uuid_1 = require("uuid");
 let LessonService = class LessonService {
     constructor(lessonRepository) {
         this.lessonRepository = lessonRepository;
+    }
+    getLesson(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.lessonRepository.findOne({ id });
+        });
+    }
+    getLessons() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.lessonRepository.find();
+        });
     }
     createLesson(createLessonInput) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -41,11 +51,6 @@ let LessonService = class LessonService {
                 endDate,
             });
             return this.lessonRepository.save(lesson);
-        });
-    }
-    getLesson(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.lessonRepository.findOne({ id });
         });
     }
 };

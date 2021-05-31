@@ -14,7 +14,7 @@ const graphql_1 = require("@nestjs/graphql");
 let LessonType = class LessonType {
 };
 __decorate([
-    graphql_1.Field((type) => graphql_1.ID),
+    graphql_1.Field(type => graphql_1.ID),
     __metadata("design:type", String)
 ], LessonType.prototype, "id", void 0);
 __decorate([
@@ -30,7 +30,7 @@ __decorate([
     __metadata("design:type", String)
 ], LessonType.prototype, "endDate", void 0);
 LessonType = __decorate([
-    graphql_1.ObjectType('Lesson')
+    graphql_1.ObjectType("Lesson")
 ], LessonType);
 exports.LessonType = LessonType;
 //# sourceMappingURL=lesson.type.js.map
