@@ -35,6 +35,9 @@ let StudentResolver = class StudentResolver {
             return this.studentService.createStudent(createStudentInput);
         });
     }
+    student(id) {
+        return this.studentService.getStudent(id);
+    }
     students() {
         return this.studentService.getAllStudent();
     }
@@ -46,6 +49,13 @@ __decorate([
     __metadata("design:paramtypes", [create_student_input_1.CreateStudentInput]),
     __metadata("design:returntype", Promise)
 ], StudentResolver.prototype, "createStudent", null);
+__decorate([
+    graphql_1.Query(returns => student_type_1.StudentType),
+    __param(0, graphql_1.Args("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], StudentResolver.prototype, "student", null);
 __decorate([
     graphql_1.Query(returns => [student_type_1.StudentType]),
     __metadata("design:type", Function),

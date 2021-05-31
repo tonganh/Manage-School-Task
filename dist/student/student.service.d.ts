@@ -6,4 +6,5 @@ export declare class StudentService {
     constructor(studentRepository: Repository<Student>);
     createStudent(createStudentInput: CreateStudentInput): Promise<Student>;
     getAllStudent(): Promise<Student[]>;
+    getStudent(id: string): Promise<Student>;
 }

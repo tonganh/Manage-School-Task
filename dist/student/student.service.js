@@ -47,6 +47,11 @@ let StudentService = class StudentService {
             return this.studentRepository.find();
         });
     }
+    getStudent(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.studentRepository.findOne({ id });
+        });
+    }
 };
 StudentService = __decorate([
     common_1.Injectable(),
