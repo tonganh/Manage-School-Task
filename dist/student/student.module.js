@@ -18,6 +18,7 @@ StudentModule = __decorate([
     common_1.Module({
         imports: [typeorm_1.TypeOrmModule.forFeature([student_entity_1.Student])],
         providers: [student_service_1.StudentService, student_resolver_1.StudentResolver],
+        exports: [student_service_1.StudentService],
     })
 ], StudentModule);
 exports.StudentModule = StudentModule;

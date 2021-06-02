@@ -9,33 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LessonType = void 0;
+exports.AssignStudentsToLessonInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const student_type_1 = require("../student/student.type");
-let LessonType = class LessonType {
+const class_validator_1 = require("class-validator");
+let AssignStudentsToLessonInput = class AssignStudentsToLessonInput {
 };
 __decorate([
+    class_validator_1.IsUUID("4", { each: true }),
+    graphql_1.Field(type => [graphql_1.ID]),
+    __metadata("design:type", Array)
+], AssignStudentsToLessonInput.prototype, "studentIds", void 0);
+__decorate([
+    class_validator_1.IsUUID(),
     graphql_1.Field(type => graphql_1.ID),
     __metadata("design:type", String)
-], LessonType.prototype, "id", void 0);
-__decorate([
-    graphql_1.Field(),
-    __metadata("design:type", String)
-], LessonType.prototype, "name", void 0);
-__decorate([
-    graphql_1.Field(),
-    __metadata("design:type", String)
-], LessonType.prototype, "startDate", void 0);
-__decorate([
-    graphql_1.Field(),
-    __metadata("design:type", String)
-], LessonType.prototype, "endDate", void 0);
-__decorate([
-    graphql_1.Field(type => [student_type_1.StudentType]),
-    __metadata("design:type", Array)
-], LessonType.prototype, "students", void 0);
-LessonType = __decorate([
-    graphql_1.ObjectType("Lesson")
-], LessonType);
-exports.LessonType = LessonType;
-//# sourceMappingURL=lesson.type.js.map
+], AssignStudentsToLessonInput.prototype, "lessonID", void 0);
+AssignStudentsToLessonInput = __decorate([
+    graphql_1.InputType()
+], AssignStudentsToLessonInput);
+exports.AssignStudentsToLessonInput = AssignStudentsToLessonInput;
+//# sourceMappingURL=assignStudentsToLessonInput.js.map

@@ -29,6 +29,11 @@ __decorate([
     graphql_1.Field(),
     __metadata("design:type", String)
 ], CreateLessonInput.prototype, "endDate", void 0);
+__decorate([
+    class_validator_1.IsUUID("4", { each: true }),
+    graphql_1.Field(() => [graphql_1.ID], { defaultValue: [] }),
+    __metadata("design:type", Array)
+], CreateLessonInput.prototype, "students", void 0);
 CreateLessonInput = __decorate([
     graphql_1.InputType()
 ], CreateLessonInput);

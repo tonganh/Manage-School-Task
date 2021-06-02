@@ -7,4 +7,5 @@ export declare class StudentService {
     createStudent(createStudentInput: CreateStudentInput): Promise<Student>;
     getAllStudent(): Promise<Student[]>;
     getStudent(id: string): Promise<Student>;
+    getManyStudents(studentsIds: string[]): Promise<Student[]>;
 }

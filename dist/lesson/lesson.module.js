@@ -12,11 +12,12 @@ const common_1 = require("@nestjs/common");
 const lesson_service_1 = require("./lesson.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const lesson_entity_1 = require("./lesson.entity");
+const student_module_1 = require("../student/student.module");
 let LessonModule = class LessonModule {
 };
 LessonModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forFeature([lesson_entity_1.Lesson])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([lesson_entity_1.Lesson]), student_module_1.StudentModule],
         providers: [lesson_resolver_1.LessonResolver, lesson_service_1.LessonService],
     })
 ], LessonModule);
